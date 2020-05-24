@@ -1,0 +1,97 @@
+
+entity Holiday{
+	label String
+    correspondingDate LocalDate
+}
+
+entity City {
+    name String
+}
+
+enum AddressType{
+	HOME,
+	WORK,
+    OTHER
+}
+
+entity Address {
+	type AddressType
+	location String
+    geolocation String
+    primaryPhoneNumber String
+    secondaryPhoneNumber String
+    emailAddress String
+}
+
+relationship ManyToOne {
+	Address{city} to City
+}
+
+entity WorkCategory {
+	name String
+    description String
+    picture String
+    icone String
+    pricePerHour BigDecimal
+}
+
+entity Work {
+	name String
+    description String
+    picture String
+    icone String
+    pricePerHour BigDecimal
+}
+
+relationship ManyToOne {
+	Work{category} to WorkCategory
+}
+
+entity AppUser {
+	
+}
+relationship OneToMany {
+	AppUser{addresses} to Address
+}
+
+relationship ManyToOne {
+	AppUser{user} to User
+}
+
+enum WorkRequestMagnitude {
+	LARGE,
+    MEDIUM,
+    SMALL
+}
+
+entity WorkRequest {
+	creationDateTime ZonedDateTime
+    forMysef Boolean
+    constructionSite Boolean
+    mediatorPercentage Integer
+    interventionDateTime ZonedDateTime
+    detailedDescription String
+    magnitude WorkRequestMagnitude
+    estimatedWorkFees BigDecimal
+}
+
+relationship ManyToOne {
+	WorkRequest{work} to Work
+}
+relationship ManyToOne {
+	WorkRequest{user} to AppUser
+}
+relationship ManyToOne {
+	WorkRequest{address} to Address
+}
+
+entity WorkReview {
+	reviewDateTime ZonedDateTime
+    starsNumber Integer
+}
+
+relationship OneToOne {
+	WorkReview{workRequest} to WorkRequest
+}
+
+service all with serviceImpl
