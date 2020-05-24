@@ -47,6 +47,15 @@ public class CacheConfiguration {
             createCache(cm, com.zelix.ahome.domain.User.class.getName());
             createCache(cm, com.zelix.ahome.domain.Authority.class.getName());
             createCache(cm, com.zelix.ahome.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.zelix.ahome.domain.Holiday.class.getName());
+            createCache(cm, com.zelix.ahome.domain.City.class.getName());
+            createCache(cm, com.zelix.ahome.domain.Address.class.getName());
+            createCache(cm, com.zelix.ahome.domain.WorkCategory.class.getName());
+            createCache(cm, com.zelix.ahome.domain.Work.class.getName());
+            createCache(cm, com.zelix.ahome.domain.AppUser.class.getName());
+            createCache(cm, com.zelix.ahome.domain.AppUser.class.getName() + ".addresses");
+            createCache(cm, com.zelix.ahome.domain.WorkRequest.class.getName());
+            createCache(cm, com.zelix.ahome.domain.WorkReview.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

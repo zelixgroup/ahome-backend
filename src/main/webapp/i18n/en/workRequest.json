@@ -1,0 +1,32 @@
+{
+  "ahomeApp": {
+    "workRequest": {
+      "home": {
+        "title": "Work Requests",
+        "createLabel": "Create a new Work Request",
+        "createOrEditLabel": "Create or edit a Work Request",
+        "notFound": "No Work Requests found"
+      },
+      "created": "A new Work Request is created with identifier {{ param }}",
+      "updated": "A Work Request is updated with identifier {{ param }}",
+      "deleted": "A Work Request is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Work Request {{ id }}?"
+      },
+      "detail": {
+        "title": "Work Request"
+      },
+      "creationDateTime": "Creation Date Time",
+      "forMysef": "For Mysef",
+      "constructionSite": "Construction Site",
+      "mediatorPercentage": "Mediator Percentage",
+      "interventionDateTime": "Intervention Date Time",
+      "detailedDescription": "Detailed Description",
+      "magnitude": "Magnitude",
+      "estimatedWorkFees": "Estimated Work Fees",
+      "work": "Work",
+      "user": "User",
+      "address": "Address"
+    }
+  }
+}

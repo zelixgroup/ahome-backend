@@ -1,0 +1,72 @@
+{
+  "name": "WorkRequest",
+  "fields": [
+    {
+      "fieldName": "creationDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "forMysef",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "constructionSite",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "mediatorPercentage",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "interventionDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "detailedDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "magnitude",
+      "fieldType": "WorkRequestMagnitude",
+      "fieldValues": "LARGE,MEDIUM,SMALL"
+    },
+    {
+      "fieldName": "estimatedWorkFees",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "work",
+      "otherEntityRelationshipName": "workRequest",
+      "relationshipName": "work",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "workRequest",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "workRequest",
+      "relationshipName": "address",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200524233150",
+  "entityTableName": "work_request",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -7,6 +7,14 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "holiday": "Holiday",
+        "city": "City",
+        "address": "Address",
+        "workCategory": "Work Category",
+        "work": "Work",
+        "appUser": "App User",
+        "workRequest": "Work Request",
+        "workReview": "Work Review",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,24 @@
+{
+  "ahomeApp": {
+    "workReview": {
+      "home": {
+        "title": "WorkReviews",
+        "createLabel": "Créer un nouveau Work Review",
+        "createOrEditLabel": "Créer ou éditer un Work Review",
+        "notFound": "Aucun Work Review trouvé"
+      },
+      "created": "Un nouveau Work Review a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Work Review avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Work Review avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Work Review {{ id }} ?"
+      },
+      "detail": {
+        "title": "Work Review"
+      },
+      "reviewDateTime": "Review Date Time",
+      "starsNumber": "Stars Number",
+      "workRequest": "Work Request"
+    }
+  }
+}
