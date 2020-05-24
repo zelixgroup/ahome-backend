@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="address">
+            <h2><span jhiTranslate="ahomeApp.address.detail.title">Address</span> {{ address.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.address.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'ahomeApp.AddressType.' + address.type }}">{{ address.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.address.location">Location</span></dt>
+                <dd>
+                    <span>{{ address.location }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.address.geolocation">Geolocation</span></dt>
+                <dd>
+                    <span>{{ address.geolocation }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.address.primaryPhoneNumber">Primary Phone Number</span></dt>
+                <dd>
+                    <span>{{ address.primaryPhoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.address.secondaryPhoneNumber">Secondary Phone Number</span></dt>
+                <dd>
+                    <span>{{ address.secondaryPhoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.address.emailAddress">Email Address</span></dt>
+                <dd>
+                    <span>{{ address.emailAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.address.city">City</span></dt>
+                <dd>
+                    <div *ngIf="address.city">
+                        <a [routerLink]="['/city', address.city?.id, 'view']">{{ address.city?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.address.appUser">App User</span></dt>
+                <dd>
+                    <div *ngIf="address.appUser">
+                        <a [routerLink]="['/app-user', address.appUser?.id, 'view']">{{ address.appUser?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/address', address.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

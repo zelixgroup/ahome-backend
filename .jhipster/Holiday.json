@@ -1,0 +1,25 @@
+{
+  "name": "Holiday",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "correspondingDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200524232550",
+  "entityTableName": "holiday",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workCategory">
+            <h2><span jhiTranslate="ahomeApp.workCategory.detail.title">Work Category</span> {{ workCategory.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.workCategory.name">Name</span></dt>
+                <dd>
+                    <span>{{ workCategory.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workCategory.description">Description</span></dt>
+                <dd>
+                    <span>{{ workCategory.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workCategory.picture">Picture</span></dt>
+                <dd>
+                    <span>{{ workCategory.picture }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workCategory.icone">Icone</span></dt>
+                <dd>
+                    <span>{{ workCategory.icone }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workCategory.pricePerHour">Price Per Hour</span></dt>
+                <dd>
+                    <span>{{ workCategory.pricePerHour }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/work-category', workCategory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

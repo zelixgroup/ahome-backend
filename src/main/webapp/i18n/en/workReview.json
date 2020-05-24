@@ -1,0 +1,24 @@
+{
+  "ahomeApp": {
+    "workReview": {
+      "home": {
+        "title": "Work Reviews",
+        "createLabel": "Create a new Work Review",
+        "createOrEditLabel": "Create or edit a Work Review",
+        "notFound": "No Work Reviews found"
+      },
+      "created": "A new Work Review is created with identifier {{ param }}",
+      "updated": "A Work Review is updated with identifier {{ param }}",
+      "deleted": "A Work Review is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Work Review {{ id }}?"
+      },
+      "detail": {
+        "title": "Work Review"
+      },
+      "reviewDateTime": "Review Date Time",
+      "starsNumber": "Stars Number",
+      "workRequest": "Work Request"
+    }
+  }
+}

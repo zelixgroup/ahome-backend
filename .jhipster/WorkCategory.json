@@ -1,0 +1,37 @@
+{
+  "name": "WorkCategory",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "icone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pricePerHour",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200524232850",
+  "entityTableName": "work_category",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

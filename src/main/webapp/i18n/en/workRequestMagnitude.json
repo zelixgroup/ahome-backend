@@ -1,0 +1,10 @@
+{
+  "ahomeApp": {
+    "WorkRequestMagnitude": {
+      "null": "",
+      "LARGE": "LARGE",
+      "MEDIUM": "MEDIUM",
+      "SMALL": "SMALL"
+    }
+  }
+}

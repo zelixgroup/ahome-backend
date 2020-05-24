@@ -1,0 +1,34 @@
+{
+  "name": "WorkReview",
+  "fields": [
+    {
+      "fieldName": "reviewDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "starsNumber",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "workRequest",
+      "otherEntityRelationshipName": "workReview",
+      "relationshipName": "workRequest",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200524233250",
+  "entityTableName": "work_review",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

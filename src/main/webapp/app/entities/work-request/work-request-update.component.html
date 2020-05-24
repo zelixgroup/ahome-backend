@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-work-request-heading" jhiTranslate="ahomeApp.workRequest.home.createOrEditLabel">Create or edit a Work Request</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.creationDateTime" for="field_creationDateTime">Creation Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_creationDateTime" type="datetime-local" class="form-control" name="creationDateTime" formControlName="creationDateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.forMysef" for="field_forMysef">For Mysef</label>
+                    <input type="checkbox" class="form-control" name="forMysef" id="field_forMysef"
+                           formControlName="forMysef"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.constructionSite" for="field_constructionSite">Construction Site</label>
+                    <input type="checkbox" class="form-control" name="constructionSite" id="field_constructionSite"
+                           formControlName="constructionSite"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.mediatorPercentage" for="field_mediatorPercentage">Mediator Percentage</label>
+                    <input type="number" class="form-control" name="mediatorPercentage" id="field_mediatorPercentage"
+                           formControlName="mediatorPercentage"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.interventionDateTime" for="field_interventionDateTime">Intervention Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_interventionDateTime" type="datetime-local" class="form-control" name="interventionDateTime" formControlName="interventionDateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.detailedDescription" for="field_detailedDescription">Detailed Description</label>
+                    <input type="text" class="form-control" name="detailedDescription" id="field_detailedDescription"
+                           formControlName="detailedDescription"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.magnitude" for="field_magnitude">Magnitude</label>
+                    <select class="form-control" name="magnitude" formControlName="magnitude" id="field_magnitude">
+                        <option value="LARGE">{{ 'ahomeApp.WorkRequestMagnitude.LARGE' | translate }}</option>
+                        <option value="MEDIUM">{{ 'ahomeApp.WorkRequestMagnitude.MEDIUM' | translate }}</option>
+                        <option value="SMALL">{{ 'ahomeApp.WorkRequestMagnitude.SMALL' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.estimatedWorkFees" for="field_estimatedWorkFees">Estimated Work Fees</label>
+                    <input type="number" class="form-control" name="estimatedWorkFees" id="field_estimatedWorkFees"
+                           formControlName="estimatedWorkFees"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.work" for="field_work">Work</label>
+                    <select class="form-control" id="field_work" name="work" formControlName="work">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workOption.id === editForm.get('work')!.value?.id ? editForm.get('work')!.value : workOption" *ngFor="let workOption of works; trackBy: trackById">{{ workOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="appUserOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : appUserOption" *ngFor="let appUserOption of appusers; trackBy: trackById">{{ appUserOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.address" for="field_address">Address</label>
+                    <select class="form-control" id="field_address" name="address" formControlName="address">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressOption.id === editForm.get('address')!.value?.id ? editForm.get('address')!.value : addressOption" *ngFor="let addressOption of addresses; trackBy: trackById">{{ addressOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

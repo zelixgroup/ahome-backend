@@ -1,0 +1,27 @@
+{
+  "ahomeApp": {
+    "work": {
+      "home": {
+        "title": "Works",
+        "createLabel": "Créer un nouveau Work",
+        "createOrEditLabel": "Créer ou éditer un Work",
+        "notFound": "Aucun Work trouvé"
+      },
+      "created": "Un nouveau Work a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Work avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Work avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Work {{ id }} ?"
+      },
+      "detail": {
+        "title": "Work"
+      },
+      "name": "Name",
+      "description": "Description",
+      "picture": "Picture",
+      "icone": "Icone",
+      "pricePerHour": "Price Per Hour",
+      "category": "Category"
+    }
+  }
+}

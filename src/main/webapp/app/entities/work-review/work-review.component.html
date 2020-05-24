@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ahomeApp.workReview.home.title">Work Reviews</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-work-review" [routerLink]="['/work-review/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="ahomeApp.workReview.home.createLabel">
+            Create a new Work Review
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="workReviews?.length === 0">
+        <span jhiTranslate="ahomeApp.workReview.home.notFound">No workReviews found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="workReviews && workReviews.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReview.reviewDateTime">Review Date Time</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReview.starsNumber">Stars Number</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReview.workRequest">Work Request</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let workReview of workReviews ;trackBy: trackId">
+                    <td><a [routerLink]="['/work-review', workReview.id, 'view']">{{ workReview.id }}</a></td>
+                    <td>{{ workReview.reviewDateTime | date:'medium' }}</td>
+                    <td>{{ workReview.starsNumber }}</td>
+                    <td>
+                        <div *ngIf="workReview.workRequest">
+                            <a [routerLink]="['/work-request', workReview.workRequest?.id, 'view']" >{{ workReview.workRequest?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/work-review', workReview.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/work-review', workReview.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(workReview)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

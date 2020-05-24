@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workReview">
+            <h2><span jhiTranslate="ahomeApp.workReview.detail.title">Work Review</span> {{ workReview.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.workReview.reviewDateTime">Review Date Time</span></dt>
+                <dd>
+                    <span>{{ workReview.reviewDateTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workReview.starsNumber">Stars Number</span></dt>
+                <dd>
+                    <span>{{ workReview.starsNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workReview.workRequest">Work Request</span></dt>
+                <dd>
+                    <div *ngIf="workReview.workRequest">
+                        <a [routerLink]="['/work-request', workReview.workRequest?.id, 'view']">{{ workReview.workRequest?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/work-review', workReview.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workRequest">
+            <h2><span jhiTranslate="ahomeApp.workRequest.detail.title">Work Request</span> {{ workRequest.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.workRequest.creationDateTime">Creation Date Time</span></dt>
+                <dd>
+                    <span>{{ workRequest.creationDateTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.forMysef">For Mysef</span></dt>
+                <dd>
+                    <span>{{ workRequest.forMysef }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.constructionSite">Construction Site</span></dt>
+                <dd>
+                    <span>{{ workRequest.constructionSite }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.mediatorPercentage">Mediator Percentage</span></dt>
+                <dd>
+                    <span>{{ workRequest.mediatorPercentage }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.interventionDateTime">Intervention Date Time</span></dt>
+                <dd>
+                    <span>{{ workRequest.interventionDateTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.detailedDescription">Detailed Description</span></dt>
+                <dd>
+                    <span>{{ workRequest.detailedDescription }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.magnitude">Magnitude</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'ahomeApp.WorkRequestMagnitude.' + workRequest.magnitude }}">{{ workRequest.magnitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.estimatedWorkFees">Estimated Work Fees</span></dt>
+                <dd>
+                    <span>{{ workRequest.estimatedWorkFees }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.work">Work</span></dt>
+                <dd>
+                    <div *ngIf="workRequest.work">
+                        <a [routerLink]="['/work', workRequest.work?.id, 'view']">{{ workRequest.work?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.user">User</span></dt>
+                <dd>
+                    <div *ngIf="workRequest.user">
+                        <a [routerLink]="['/app-user', workRequest.user?.id, 'view']">{{ workRequest.user?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.address">Address</span></dt>
+                <dd>
+                    <div *ngIf="workRequest.address">
+                        <a [routerLink]="['/address', workRequest.address?.id, 'view']">{{ workRequest.address?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/work-request', workRequest.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

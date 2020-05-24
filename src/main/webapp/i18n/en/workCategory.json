@@ -1,0 +1,26 @@
+{
+  "ahomeApp": {
+    "workCategory": {
+      "home": {
+        "title": "Work Categories",
+        "createLabel": "Create a new Work Category",
+        "createOrEditLabel": "Create or edit a Work Category",
+        "notFound": "No Work Categories found"
+      },
+      "created": "A new Work Category is created with identifier {{ param }}",
+      "updated": "A Work Category is updated with identifier {{ param }}",
+      "deleted": "A Work Category is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Work Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Work Category"
+      },
+      "name": "Name",
+      "description": "Description",
+      "picture": "Picture",
+      "icone": "Icone",
+      "pricePerHour": "Price Per Hour"
+    }
+  }
+}
