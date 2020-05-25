@@ -21,13 +21,13 @@
     <div class="table-responsive" id="entities" *ngIf="workRequestStatusChanges && workRequestStatusChanges.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.oldStatus">Old Status</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.newStatus">New Status</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.dateTimeOfStatusChange">Date Time Of Status Change</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="oldStatus"><span jhiTranslate="ahomeApp.workRequestStatusChange.oldStatus">Old Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="newStatus"><span jhiTranslate="ahomeApp.workRequestStatusChange.newStatus">New Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateTimeOfStatusChange"><span jhiTranslate="ahomeApp.workRequestStatusChange.dateTimeOfStatusChange">Date Time Of Status Change</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="workRequest.id"><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="workRequest.id"><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -73,5 +73,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="workRequestStatusChanges && workRequestStatusChanges.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

@@ -21,21 +21,21 @@
     <div class="table-responsive" id="entities" *ngIf="workRequests && workRequests.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.creationDateTime">Creation Date Time</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.forMysef">For Mysef</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.constructionSite">Construction Site</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.mediatorPercentage">Mediator Percentage</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.detailedDescription">Detailed Description</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.magnitude">Magnitude</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.estimatedWorkFees">Estimated Work Fees</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.plannedStartDateTime">Planned Start Date Time</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.plannedEndDateTime">Planned End Date Time</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.status">Status</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.work">Work</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.user">User</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequest.address">Address</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creationDateTime"><span jhiTranslate="ahomeApp.workRequest.creationDateTime">Creation Date Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="forMysef"><span jhiTranslate="ahomeApp.workRequest.forMysef">For Mysef</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="constructionSite"><span jhiTranslate="ahomeApp.workRequest.constructionSite">Construction Site</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="mediatorPercentage"><span jhiTranslate="ahomeApp.workRequest.mediatorPercentage">Mediator Percentage</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="detailedDescription"><span jhiTranslate="ahomeApp.workRequest.detailedDescription">Detailed Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="magnitude"><span jhiTranslate="ahomeApp.workRequest.magnitude">Magnitude</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="estimatedWorkFees"><span jhiTranslate="ahomeApp.workRequest.estimatedWorkFees">Estimated Work Fees</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="plannedStartDateTime"><span jhiTranslate="ahomeApp.workRequest.plannedStartDateTime">Planned Start Date Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="plannedEndDateTime"><span jhiTranslate="ahomeApp.workRequest.plannedEndDateTime">Planned End Date Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="ahomeApp.workRequest.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="work.id"><span jhiTranslate="ahomeApp.workRequest.work">Work</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="ahomeApp.workRequest.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="address.id"><span jhiTranslate="ahomeApp.workRequest.address">Address</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -93,5 +93,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="workRequests && workRequests.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

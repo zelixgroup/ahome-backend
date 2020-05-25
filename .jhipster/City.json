@@ -10,7 +10,7 @@
   "changelogDate": "20200524232650",
   "entityTableName": "city",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

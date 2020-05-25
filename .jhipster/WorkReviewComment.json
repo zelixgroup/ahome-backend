@@ -36,7 +36,7 @@
   "changelogDate": "20200525010532",
   "entityTableName": "work_review_comment",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

@@ -21,14 +21,14 @@
     <div class="table-responsive" id="entities" *ngIf="works && works.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.work.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.work.description">Description</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.work.picture">Picture</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.work.icone">Icone</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.work.pricePerHour">Price Per Hour</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.work.category">Category</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="ahomeApp.work.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="ahomeApp.work.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="picture"><span jhiTranslate="ahomeApp.work.picture">Picture</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="icone"><span jhiTranslate="ahomeApp.work.icone">Icone</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pricePerHour"><span jhiTranslate="ahomeApp.work.pricePerHour">Price Per Hour</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="category.id"><span jhiTranslate="ahomeApp.work.category">Category</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -71,5 +71,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="works && works.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>
