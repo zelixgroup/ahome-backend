@@ -147,6 +147,8 @@ entity WorkReviewComment {
 }
 relationship ManyToOne {
 	WorkReviewComment{workReview} to WorkReview
+}
+relationship ManyToOne {
     WorkReviewComment{user} to User
 }
 relationship OneToMany {
