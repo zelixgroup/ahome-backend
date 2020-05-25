@@ -46,7 +46,7 @@
   "changelogDate": "20200524232750",
   "entityTableName": "address",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

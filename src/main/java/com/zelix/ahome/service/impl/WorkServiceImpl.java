@@ -6,10 +6,11 @@ import com.zelix.ahome.repository.WorkRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -42,13 +43,14 @@ public class WorkServiceImpl implements WorkService {
     /**
      * Get all the works.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Work> findAll() {
+    public Page<Work> findAll(Pageable pageable) {
         log.debug("Request to get all Works");
-        return workRepository.findAll();
+        return workRepository.findAll(pageable);
     }
 
 

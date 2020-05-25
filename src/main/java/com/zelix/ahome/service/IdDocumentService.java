@@ -2,7 +2,9 @@ package com.zelix.ahome.service;
 
 import com.zelix.ahome.domain.IdDocument;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface IdDocumentService {
     /**
      * Get all the idDocuments.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<IdDocument> findAll();
+    Page<IdDocument> findAll(Pageable pageable);
 
 
     /**

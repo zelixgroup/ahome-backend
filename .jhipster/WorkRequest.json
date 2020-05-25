@@ -76,7 +76,7 @@
   "changelogDate": "20200524233150",
   "entityTableName": "work_request",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

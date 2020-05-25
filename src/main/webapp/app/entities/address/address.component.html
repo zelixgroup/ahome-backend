@@ -21,16 +21,16 @@
     <div class="table-responsive" id="entities" *ngIf="addresses && addresses.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.type">Type</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.location">Location</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.geolocation">Geolocation</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.primaryPhoneNumber">Primary Phone Number</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.secondaryPhoneNumber">Secondary Phone Number</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.emailAddress">Email Address</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.city">City</span></th>
-                    <th scope="col" ><span jhiTranslate="ahomeApp.address.appUser">App User</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="ahomeApp.address.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="location"><span jhiTranslate="ahomeApp.address.location">Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="geolocation"><span jhiTranslate="ahomeApp.address.geolocation">Geolocation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="primaryPhoneNumber"><span jhiTranslate="ahomeApp.address.primaryPhoneNumber">Primary Phone Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="secondaryPhoneNumber"><span jhiTranslate="ahomeApp.address.secondaryPhoneNumber">Secondary Phone Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="emailAddress"><span jhiTranslate="ahomeApp.address.emailAddress">Email Address</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="city.id"><span jhiTranslate="ahomeApp.address.city">City</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="appUser.id"><span jhiTranslate="ahomeApp.address.appUser">App User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -79,5 +79,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="addresses && addresses.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

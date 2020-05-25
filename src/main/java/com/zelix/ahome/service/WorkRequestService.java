@@ -2,7 +2,9 @@ package com.zelix.ahome.service;
 
 import com.zelix.ahome.domain.WorkRequest;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface WorkRequestService {
     /**
      * Get all the workRequests.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<WorkRequest> findAll();
+    Page<WorkRequest> findAll(Pageable pageable);
 
 
     /**

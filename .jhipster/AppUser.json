@@ -19,7 +19,7 @@
   "changelogDate": "20200524233050",
   "entityTableName": "app_user",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

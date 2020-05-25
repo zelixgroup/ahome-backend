@@ -2,7 +2,9 @@ package com.zelix.ahome.service;
 
 import com.zelix.ahome.domain.AppUser;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface AppUserService {
     /**
      * Get all the appUsers.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<AppUser> findAll();
+    Page<AppUser> findAll(Pageable pageable);
 
 
     /**

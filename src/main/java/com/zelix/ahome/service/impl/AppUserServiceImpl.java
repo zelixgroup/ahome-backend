@@ -6,10 +6,11 @@ import com.zelix.ahome.repository.AppUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -42,13 +43,14 @@ public class AppUserServiceImpl implements AppUserService {
     /**
      * Get all the appUsers.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Override
     @Transactional(readOnly = true)
-    public List<AppUser> findAll() {
+    public Page<AppUser> findAll(Pageable pageable) {
         log.debug("Request to get all AppUsers");
-        return appUserRepository.findAll();
+        return appUserRepository.findAll(pageable);
     }
 
 
