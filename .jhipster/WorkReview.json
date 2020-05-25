@@ -8,6 +8,10 @@
     {
       "fieldName": "starsNumber",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
     }
   ],
   "relationships": [
@@ -18,6 +22,12 @@
       "relationshipName": "workRequest",
       "otherEntityField": "id",
       "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "workReviewComment",
+      "otherEntityRelationshipName": "workReview",
+      "relationshipName": "workReviewComments"
     }
   ],
   "changelogDate": "20200524233250",

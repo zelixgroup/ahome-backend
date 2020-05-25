@@ -1,0 +1,41 @@
+{
+  "name": "Worker",
+  "fields": [
+    {
+      "fieldName": "picture",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "workCertificate",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "idDocument",
+      "otherEntityRelationshipName": "worker",
+      "relationshipName": "idDocument"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "worker",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200525010132",
+  "entityTableName": "worker",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

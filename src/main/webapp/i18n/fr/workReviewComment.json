@@ -1,0 +1,26 @@
+{
+  "ahomeApp": {
+    "workReviewComment": {
+      "home": {
+        "title": "WorkReviewComments",
+        "createLabel": "Créer un nouveau Work Review Comment",
+        "createOrEditLabel": "Créer ou éditer un Work Review Comment",
+        "notFound": "Aucun Work Review Comment trouvé"
+      },
+      "created": "Un nouveau Work Review Comment a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Work Review Comment avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Work Review Comment avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Work Review Comment {{ id }} ?"
+      },
+      "detail": {
+        "title": "Work Review Comment"
+      },
+      "commentDateTime": "Comment Date Time",
+      "comment": "Comment",
+      "workReview": "Work Review",
+      "user": "User",
+      "workReview": "Work Review"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity WorkRequestStatusChange.
+    -->
+    <changeSet id="20200525010332-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="work_request_id"
+                                 baseTableName="work_request_status_change"
+                                 constraintName="fk_work_request_status_change_work_request_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="work_request"/>
+
+        <addForeignKeyConstraint baseColumnNames="work_request_id"
+                                 baseTableName="work_request_status_change"
+                                 constraintName="fk_work_request_status_change_work_request_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="work_request"/>
+
+    </changeSet>
+</databaseChangeLog>

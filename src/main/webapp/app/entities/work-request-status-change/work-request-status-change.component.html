@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ahomeApp.workRequestStatusChange.home.title">Work Request Status Changes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-work-request-status-change" [routerLink]="['/work-request-status-change/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="ahomeApp.workRequestStatusChange.home.createLabel">
+            Create a new Work Request Status Change
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="workRequestStatusChanges?.length === 0">
+        <span jhiTranslate="ahomeApp.workRequestStatusChange.home.notFound">No workRequestStatusChanges found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="workRequestStatusChanges && workRequestStatusChanges.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.oldStatus">Old Status</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.newStatus">New Status</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.dateTimeOfStatusChange">Date Time Of Status Change</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let workRequestStatusChange of workRequestStatusChanges ;trackBy: trackId">
+                    <td><a [routerLink]="['/work-request-status-change', workRequestStatusChange.id, 'view']">{{ workRequestStatusChange.id }}</a></td>
+                    <td jhiTranslate="{{ 'ahomeApp.WorkRequestStatus.' + workRequestStatusChange.oldStatus }}">{{ workRequestStatusChange.oldStatus }}</td>
+                    <td jhiTranslate="{{ 'ahomeApp.WorkRequestStatus.' + workRequestStatusChange.newStatus }}">{{ workRequestStatusChange.newStatus }}</td>
+                    <td>{{ workRequestStatusChange.dateTimeOfStatusChange | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="workRequestStatusChange.workRequest">
+                            <a [routerLink]="['/work-request', workRequestStatusChange.workRequest?.id, 'view']" >{{ workRequestStatusChange.workRequest?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="workRequestStatusChange.workRequest">
+                            <a [routerLink]="['/work-request', workRequestStatusChange.workRequest?.id, 'view']" >{{ workRequestStatusChange.workRequest?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/work-request-status-change', workRequestStatusChange.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/work-request-status-change', workRequestStatusChange.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(workRequestStatusChange)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

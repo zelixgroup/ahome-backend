@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A WorkReview.
@@ -28,9 +30,16 @@ public class WorkReview implements Serializable {
     @Column(name = "stars_number")
     private Integer starsNumber;
 
+    @Column(name = "notes")
+    private String notes;
+
     @OneToOne
     @JoinColumn(unique = true)
     private WorkRequest workRequest;
+
+    @OneToMany(mappedBy = "workReview")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<WorkReviewComment> workReviewComments = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -67,6 +76,19 @@ public class WorkReview implements Serializable {
         this.starsNumber = starsNumber;
     }
 
+    public String getNotes() {
+        return notes;
+    }
+
+    public WorkReview notes(String notes) {
+        this.notes = notes;
+        return this;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
     public WorkRequest getWorkRequest() {
         return workRequest;
     }
@@ -78,6 +100,31 @@ public class WorkReview implements Serializable {
 
     public void setWorkRequest(WorkRequest workRequest) {
         this.workRequest = workRequest;
+    }
+
+    public Set<WorkReviewComment> getWorkReviewComments() {
+        return workReviewComments;
+    }
+
+    public WorkReview workReviewComments(Set<WorkReviewComment> workReviewComments) {
+        this.workReviewComments = workReviewComments;
+        return this;
+    }
+
+    public WorkReview addWorkReviewComments(WorkReviewComment workReviewComment) {
+        this.workReviewComments.add(workReviewComment);
+        workReviewComment.setWorkReview(this);
+        return this;
+    }
+
+    public WorkReview removeWorkReviewComments(WorkReviewComment workReviewComment) {
+        this.workReviewComments.remove(workReviewComment);
+        workReviewComment.setWorkReview(null);
+        return this;
+    }
+
+    public void setWorkReviewComments(Set<WorkReviewComment> workReviewComments) {
+        this.workReviewComments = workReviewComments;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -104,6 +151,7 @@ public class WorkReview implements Serializable {
             "id=" + getId() +
             ", reviewDateTime='" + getReviewDateTime() + "'" +
             ", starsNumber=" + getStarsNumber() +
+            ", notes='" + getNotes() + "'" +
             "}";
     }
 }

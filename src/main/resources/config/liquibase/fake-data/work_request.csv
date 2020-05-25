@@ -1,11 +1,11 @@
-id;creation_date_time;for_mysef;construction_site;mediator_percentage;intervention_date_time;detailed_description;magnitude;estimated_work_fees
-1;2020-05-24T13:52:49;false;true;55304;2020-05-24T18:19:46;iterate Ergonomic;SMALL;44585
-2;2020-05-24T06:17:30;false;false;58600;2020-05-24T21:56:39;mobile Garden;LARGE;46927
-3;2020-05-24T07:05:19;false;true;32714;2020-05-24T18:41:17;Fresh Grocery Gorgeous Frozen Sausages;LARGE;69623
-4;2020-05-24T02:13:29;false;false;67891;2020-05-24T15:03:52;partnerships olive calculating;SMALL;13904
-5;2020-05-24T09:53:18;true;false;20863;2020-05-24T08:47:30;parse regional Lek;LARGE;98207
-6;2020-05-24T09:37:42;true;false;88819;2020-05-24T13:47:20;red Analyst;MEDIUM;40349
-7;2020-05-24T11:35:09;false;true;44657;2020-05-24T13:46:51;Buckinghamshire Bacon;SMALL;53925
-8;2020-05-24T11:25:41;false;false;66249;2020-05-24T15:13:51;deliverables;LARGE;53498
-9;2020-05-24T04:41:23;true;true;15992;2020-05-24T13:17:01;Internal SMS;SMALL;66776
-10;2020-05-24T09:39:03;true;true;66297;2020-05-24T11:30:19;Bedfordshire;MEDIUM;63821
+id;creation_date_time;for_mysef;construction_site;mediator_percentage;detailed_description;magnitude;estimated_work_fees;planned_start_date_time;planned_end_date_time;status
+1;2020-05-24T13:52:49;false;true;55304;Money Market Account;MEDIUM;97880;2020-05-24T12:49:47;2020-05-24T06:17:30;SUBMITTED
+2;2020-05-24T13:33:38;true;true;592;Infrastructure Up-sized;LARGE;46927;2020-05-24T07:05:19;2020-05-24T14:24:10;REJECTED
+3;2020-05-24T23:31:38;false;false;25009;Integration sensor Chicken;LARGE;20714;2020-05-24T07:53:19;2020-05-24T03:39:23;ACCEPTED
+4;2020-05-24T13:47:14;false;true;13904;RSS orchid;SMALL;31574;2020-05-24T18:01:05;2020-05-24T01:36:29;IN_PROGRESS
+5;2020-05-24T02:12:50;false;true;20614;Analyst;MEDIUM;40349;2020-05-24T11:35:09;2020-05-24T23:11:14;CANCELED
+6;2020-05-24T19:11:20;true;false;52681;seize firewall Bedfordshire;SMALL;40950;2020-05-24T22:54:02;2020-05-24T17:11:04;FINISHED
+7;2020-05-24T04:41:23;true;true;15992;Personal Loan Account transmitting;SMALL;57831;2020-05-24T06:33:19;2020-05-24T01:37:58;FINISHED
+8;2020-05-24T19:32:26;true;true;68542;payment Central;LARGE;54823;2020-05-24T02:31:59;2020-05-24T19:54:09;ACCEPTED
+9;2020-05-24T01:39:59;true;false;9506;Data;SMALL;26157;2020-05-24T14:03:31;2020-05-24T00:03:38;FINISHED
+10;2020-05-23T23:47:44;true;false;46866;Berkshire;MEDIUM;40652;2020-05-24T20:30:28;2020-05-24T00:38:31;FINISHED

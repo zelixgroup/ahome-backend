@@ -5,6 +5,7 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { WorkRequestService } from 'app/entities/work-request/work-request.service';
 import { IWorkRequest, WorkRequest } from 'app/shared/model/work-request.model';
 import { WorkRequestMagnitude } from 'app/shared/model/enumerations/work-request-magnitude.model';
+import { WorkRequestStatus } from 'app/shared/model/enumerations/work-request-status.model';
 
 describe('Service Tests', () => {
   describe('WorkRequest Service', () => {
@@ -25,7 +26,19 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new WorkRequest(0, currentDate, false, false, 0, currentDate, 'AAAAAAA', WorkRequestMagnitude.LARGE, 0);
+      elemDefault = new WorkRequest(
+        0,
+        currentDate,
+        false,
+        false,
+        0,
+        'AAAAAAA',
+        WorkRequestMagnitude.LARGE,
+        0,
+        currentDate,
+        currentDate,
+        WorkRequestStatus.SUBMITTED
+      );
     });
 
     describe('Service methods', () => {
@@ -33,7 +46,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             creationDateTime: currentDate.format(DATE_TIME_FORMAT),
-            interventionDateTime: currentDate.format(DATE_TIME_FORMAT),
+            plannedStartDateTime: currentDate.format(DATE_TIME_FORMAT),
+            plannedEndDateTime: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -50,7 +64,8 @@ describe('Service Tests', () => {
           {
             id: 0,
             creationDateTime: currentDate.format(DATE_TIME_FORMAT),
-            interventionDateTime: currentDate.format(DATE_TIME_FORMAT),
+            plannedStartDateTime: currentDate.format(DATE_TIME_FORMAT),
+            plannedEndDateTime: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -58,7 +73,8 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             creationDateTime: currentDate,
-            interventionDateTime: currentDate,
+            plannedStartDateTime: currentDate,
+            plannedEndDateTime: currentDate,
           },
           returnedFromService
         );
@@ -77,10 +93,12 @@ describe('Service Tests', () => {
             forMysef: true,
             constructionSite: true,
             mediatorPercentage: 1,
-            interventionDateTime: currentDate.format(DATE_TIME_FORMAT),
             detailedDescription: 'BBBBBB',
             magnitude: 'BBBBBB',
             estimatedWorkFees: 1,
+            plannedStartDateTime: currentDate.format(DATE_TIME_FORMAT),
+            plannedEndDateTime: currentDate.format(DATE_TIME_FORMAT),
+            status: 'BBBBBB',
           },
           elemDefault
         );
@@ -88,7 +106,8 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             creationDateTime: currentDate,
-            interventionDateTime: currentDate,
+            plannedStartDateTime: currentDate,
+            plannedEndDateTime: currentDate,
           },
           returnedFromService
         );
@@ -107,10 +126,12 @@ describe('Service Tests', () => {
             forMysef: true,
             constructionSite: true,
             mediatorPercentage: 1,
-            interventionDateTime: currentDate.format(DATE_TIME_FORMAT),
             detailedDescription: 'BBBBBB',
             magnitude: 'BBBBBB',
             estimatedWorkFees: 1,
+            plannedStartDateTime: currentDate.format(DATE_TIME_FORMAT),
+            plannedEndDateTime: currentDate.format(DATE_TIME_FORMAT),
+            status: 'BBBBBB',
           },
           elemDefault
         );
@@ -118,7 +139,8 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             creationDateTime: currentDate,
-            interventionDateTime: currentDate,
+            plannedStartDateTime: currentDate,
+            plannedEndDateTime: currentDate,
           },
           returnedFromService
         );

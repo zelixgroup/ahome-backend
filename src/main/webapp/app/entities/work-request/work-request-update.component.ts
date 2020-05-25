@@ -34,10 +34,12 @@ export class WorkRequestUpdateComponent implements OnInit {
     forMysef: [],
     constructionSite: [],
     mediatorPercentage: [],
-    interventionDateTime: [],
     detailedDescription: [],
     magnitude: [],
     estimatedWorkFees: [],
+    plannedStartDateTime: [],
+    plannedEndDateTime: [],
+    status: [],
     work: [],
     user: [],
     address: [],
@@ -57,7 +59,8 @@ export class WorkRequestUpdateComponent implements OnInit {
       if (!workRequest.id) {
         const today = moment().startOf('day');
         workRequest.creationDateTime = today;
-        workRequest.interventionDateTime = today;
+        workRequest.plannedStartDateTime = today;
+        workRequest.plannedEndDateTime = today;
       }
 
       this.updateForm(workRequest);
@@ -77,10 +80,12 @@ export class WorkRequestUpdateComponent implements OnInit {
       forMysef: workRequest.forMysef,
       constructionSite: workRequest.constructionSite,
       mediatorPercentage: workRequest.mediatorPercentage,
-      interventionDateTime: workRequest.interventionDateTime ? workRequest.interventionDateTime.format(DATE_TIME_FORMAT) : null,
       detailedDescription: workRequest.detailedDescription,
       magnitude: workRequest.magnitude,
       estimatedWorkFees: workRequest.estimatedWorkFees,
+      plannedStartDateTime: workRequest.plannedStartDateTime ? workRequest.plannedStartDateTime.format(DATE_TIME_FORMAT) : null,
+      plannedEndDateTime: workRequest.plannedEndDateTime ? workRequest.plannedEndDateTime.format(DATE_TIME_FORMAT) : null,
+      status: workRequest.status,
       work: workRequest.work,
       user: workRequest.user,
       address: workRequest.address,
@@ -111,12 +116,16 @@ export class WorkRequestUpdateComponent implements OnInit {
       forMysef: this.editForm.get(['forMysef'])!.value,
       constructionSite: this.editForm.get(['constructionSite'])!.value,
       mediatorPercentage: this.editForm.get(['mediatorPercentage'])!.value,
-      interventionDateTime: this.editForm.get(['interventionDateTime'])!.value
-        ? moment(this.editForm.get(['interventionDateTime'])!.value, DATE_TIME_FORMAT)
-        : undefined,
       detailedDescription: this.editForm.get(['detailedDescription'])!.value,
       magnitude: this.editForm.get(['magnitude'])!.value,
       estimatedWorkFees: this.editForm.get(['estimatedWorkFees'])!.value,
+      plannedStartDateTime: this.editForm.get(['plannedStartDateTime'])!.value
+        ? moment(this.editForm.get(['plannedStartDateTime'])!.value, DATE_TIME_FORMAT)
+        : undefined,
+      plannedEndDateTime: this.editForm.get(['plannedEndDateTime'])!.value
+        ? moment(this.editForm.get(['plannedEndDateTime'])!.value, DATE_TIME_FORMAT)
+        : undefined,
+      status: this.editForm.get(['status'])!.value,
       work: this.editForm.get(['work'])!.value,
       user: this.editForm.get(['user'])!.value,
       address: this.editForm.get(['address'])!.value,

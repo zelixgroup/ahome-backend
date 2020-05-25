@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workRequestStatusChange">
+            <h2><span jhiTranslate="ahomeApp.workRequestStatusChange.detail.title">Work Request Status Change</span> {{ workRequestStatusChange.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.workRequestStatusChange.oldStatus">Old Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'ahomeApp.WorkRequestStatus.' + workRequestStatusChange.oldStatus }}">{{ workRequestStatusChange.oldStatus }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequestStatusChange.newStatus">New Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'ahomeApp.WorkRequestStatus.' + workRequestStatusChange.newStatus }}">{{ workRequestStatusChange.newStatus }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequestStatusChange.dateTimeOfStatusChange">Date Time Of Status Change</span></dt>
+                <dd>
+                    <span>{{ workRequestStatusChange.dateTimeOfStatusChange }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span></dt>
+                <dd>
+                    <div *ngIf="workRequestStatusChange.workRequest">
+                        <a [routerLink]="['/work-request', workRequestStatusChange.workRequest?.id, 'view']">{{ workRequestStatusChange.workRequest?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequestStatusChange.workRequest">Work Request</span></dt>
+                <dd>
+                    <div *ngIf="workRequestStatusChange.workRequest">
+                        <a [routerLink]="['/work-request', workRequestStatusChange.workRequest?.id, 'view']">{{ workRequestStatusChange.workRequest?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/work-request-status-change', workRequestStatusChange.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

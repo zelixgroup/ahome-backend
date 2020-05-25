@@ -9,8 +9,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.zelix.ahome.domain.enumeration.WorkRequestMagnitude;
+
+import com.zelix.ahome.domain.enumeration.WorkRequestStatus;
 
 /**
  * A WorkRequest.
@@ -38,9 +42,6 @@ public class WorkRequest implements Serializable {
     @Column(name = "mediator_percentage")
     private Integer mediatorPercentage;
 
-    @Column(name = "intervention_date_time")
-    private ZonedDateTime interventionDateTime;
-
     @Column(name = "detailed_description")
     private String detailedDescription;
 
@@ -50,6 +51,20 @@ public class WorkRequest implements Serializable {
 
     @Column(name = "estimated_work_fees", precision = 21, scale = 2)
     private BigDecimal estimatedWorkFees;
+
+    @Column(name = "planned_start_date_time")
+    private ZonedDateTime plannedStartDateTime;
+
+    @Column(name = "planned_end_date_time")
+    private ZonedDateTime plannedEndDateTime;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private WorkRequestStatus status;
+
+    @OneToMany(mappedBy = "workRequest")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<WorkRequestStatusChange> statusChanges = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = "workRequests", allowSetters = true)
@@ -124,19 +139,6 @@ public class WorkRequest implements Serializable {
         this.mediatorPercentage = mediatorPercentage;
     }
 
-    public ZonedDateTime getInterventionDateTime() {
-        return interventionDateTime;
-    }
-
-    public WorkRequest interventionDateTime(ZonedDateTime interventionDateTime) {
-        this.interventionDateTime = interventionDateTime;
-        return this;
-    }
-
-    public void setInterventionDateTime(ZonedDateTime interventionDateTime) {
-        this.interventionDateTime = interventionDateTime;
-    }
-
     public String getDetailedDescription() {
         return detailedDescription;
     }
@@ -174,6 +176,70 @@ public class WorkRequest implements Serializable {
 
     public void setEstimatedWorkFees(BigDecimal estimatedWorkFees) {
         this.estimatedWorkFees = estimatedWorkFees;
+    }
+
+    public ZonedDateTime getPlannedStartDateTime() {
+        return plannedStartDateTime;
+    }
+
+    public WorkRequest plannedStartDateTime(ZonedDateTime plannedStartDateTime) {
+        this.plannedStartDateTime = plannedStartDateTime;
+        return this;
+    }
+
+    public void setPlannedStartDateTime(ZonedDateTime plannedStartDateTime) {
+        this.plannedStartDateTime = plannedStartDateTime;
+    }
+
+    public ZonedDateTime getPlannedEndDateTime() {
+        return plannedEndDateTime;
+    }
+
+    public WorkRequest plannedEndDateTime(ZonedDateTime plannedEndDateTime) {
+        this.plannedEndDateTime = plannedEndDateTime;
+        return this;
+    }
+
+    public void setPlannedEndDateTime(ZonedDateTime plannedEndDateTime) {
+        this.plannedEndDateTime = plannedEndDateTime;
+    }
+
+    public WorkRequestStatus getStatus() {
+        return status;
+    }
+
+    public WorkRequest status(WorkRequestStatus status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(WorkRequestStatus status) {
+        this.status = status;
+    }
+
+    public Set<WorkRequestStatusChange> getStatusChanges() {
+        return statusChanges;
+    }
+
+    public WorkRequest statusChanges(Set<WorkRequestStatusChange> workRequestStatusChanges) {
+        this.statusChanges = workRequestStatusChanges;
+        return this;
+    }
+
+    public WorkRequest addStatusChanges(WorkRequestStatusChange workRequestStatusChange) {
+        this.statusChanges.add(workRequestStatusChange);
+        workRequestStatusChange.setWorkRequest(this);
+        return this;
+    }
+
+    public WorkRequest removeStatusChanges(WorkRequestStatusChange workRequestStatusChange) {
+        this.statusChanges.remove(workRequestStatusChange);
+        workRequestStatusChange.setWorkRequest(null);
+        return this;
+    }
+
+    public void setStatusChanges(Set<WorkRequestStatusChange> workRequestStatusChanges) {
+        this.statusChanges = workRequestStatusChanges;
     }
 
     public Work getWork() {
@@ -241,10 +307,12 @@ public class WorkRequest implements Serializable {
             ", forMysef='" + isForMysef() + "'" +
             ", constructionSite='" + isConstructionSite() + "'" +
             ", mediatorPercentage=" + getMediatorPercentage() +
-            ", interventionDateTime='" + getInterventionDateTime() + "'" +
             ", detailedDescription='" + getDetailedDescription() + "'" +
             ", magnitude='" + getMagnitude() + "'" +
             ", estimatedWorkFees=" + getEstimatedWorkFees() +
+            ", plannedStartDateTime='" + getPlannedStartDateTime() + "'" +
+            ", plannedEndDateTime='" + getPlannedEndDateTime() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

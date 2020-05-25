@@ -18,10 +18,6 @@
       "fieldType": "Integer"
     },
     {
-      "fieldName": "interventionDateTime",
-      "fieldType": "ZonedDateTime"
-    },
-    {
       "fieldName": "detailedDescription",
       "fieldType": "String"
     },
@@ -33,9 +29,28 @@
     {
       "fieldName": "estimatedWorkFees",
       "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "plannedStartDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "plannedEndDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "WorkRequestStatus",
+      "fieldValues": "SUBMITTED,ACCEPTED,IN_PROGRESS,FINISHED,CANCELED,REJECTED"
     }
   ],
   "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "workRequestStatusChange",
+      "otherEntityRelationshipName": "workRequest",
+      "relationshipName": "statusChanges"
+    },
     {
       "relationshipType": "many-to-one",
       "otherEntityName": "work",

@@ -15,6 +15,11 @@
         "appUser": "App User",
         "workRequest": "Work Request",
         "workReview": "Work Review",
+        "idDocumentType": "Id Document Type",
+        "idDocument": "Id Document",
+        "worker": "Worker",
+        "workRequestStatusChange": "Work Request Status Change",
+        "workReviewComment": "Work Review Comment",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

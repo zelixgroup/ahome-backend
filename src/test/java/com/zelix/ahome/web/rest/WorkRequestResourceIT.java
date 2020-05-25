@@ -29,6 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.zelix.ahome.domain.enumeration.WorkRequestMagnitude;
+import com.zelix.ahome.domain.enumeration.WorkRequestStatus;
 /**
  * Integration tests for the {@link WorkRequestResource} REST controller.
  */
@@ -49,9 +50,6 @@ public class WorkRequestResourceIT {
     private static final Integer DEFAULT_MEDIATOR_PERCENTAGE = 1;
     private static final Integer UPDATED_MEDIATOR_PERCENTAGE = 2;
 
-    private static final ZonedDateTime DEFAULT_INTERVENTION_DATE_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_INTERVENTION_DATE_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-
     private static final String DEFAULT_DETAILED_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DETAILED_DESCRIPTION = "BBBBBBBBBB";
 
@@ -60,6 +58,15 @@ public class WorkRequestResourceIT {
 
     private static final BigDecimal DEFAULT_ESTIMATED_WORK_FEES = new BigDecimal(1);
     private static final BigDecimal UPDATED_ESTIMATED_WORK_FEES = new BigDecimal(2);
+
+    private static final ZonedDateTime DEFAULT_PLANNED_START_DATE_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_PLANNED_START_DATE_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final ZonedDateTime DEFAULT_PLANNED_END_DATE_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_PLANNED_END_DATE_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final WorkRequestStatus DEFAULT_STATUS = WorkRequestStatus.SUBMITTED;
+    private static final WorkRequestStatus UPDATED_STATUS = WorkRequestStatus.ACCEPTED;
 
     @Autowired
     private WorkRequestRepository workRequestRepository;
@@ -87,10 +94,12 @@ public class WorkRequestResourceIT {
             .forMysef(DEFAULT_FOR_MYSEF)
             .constructionSite(DEFAULT_CONSTRUCTION_SITE)
             .mediatorPercentage(DEFAULT_MEDIATOR_PERCENTAGE)
-            .interventionDateTime(DEFAULT_INTERVENTION_DATE_TIME)
             .detailedDescription(DEFAULT_DETAILED_DESCRIPTION)
             .magnitude(DEFAULT_MAGNITUDE)
-            .estimatedWorkFees(DEFAULT_ESTIMATED_WORK_FEES);
+            .estimatedWorkFees(DEFAULT_ESTIMATED_WORK_FEES)
+            .plannedStartDateTime(DEFAULT_PLANNED_START_DATE_TIME)
+            .plannedEndDateTime(DEFAULT_PLANNED_END_DATE_TIME)
+            .status(DEFAULT_STATUS);
         return workRequest;
     }
     /**
@@ -105,10 +114,12 @@ public class WorkRequestResourceIT {
             .forMysef(UPDATED_FOR_MYSEF)
             .constructionSite(UPDATED_CONSTRUCTION_SITE)
             .mediatorPercentage(UPDATED_MEDIATOR_PERCENTAGE)
-            .interventionDateTime(UPDATED_INTERVENTION_DATE_TIME)
             .detailedDescription(UPDATED_DETAILED_DESCRIPTION)
             .magnitude(UPDATED_MAGNITUDE)
-            .estimatedWorkFees(UPDATED_ESTIMATED_WORK_FEES);
+            .estimatedWorkFees(UPDATED_ESTIMATED_WORK_FEES)
+            .plannedStartDateTime(UPDATED_PLANNED_START_DATE_TIME)
+            .plannedEndDateTime(UPDATED_PLANNED_END_DATE_TIME)
+            .status(UPDATED_STATUS);
         return workRequest;
     }
 
@@ -135,10 +146,12 @@ public class WorkRequestResourceIT {
         assertThat(testWorkRequest.isForMysef()).isEqualTo(DEFAULT_FOR_MYSEF);
         assertThat(testWorkRequest.isConstructionSite()).isEqualTo(DEFAULT_CONSTRUCTION_SITE);
         assertThat(testWorkRequest.getMediatorPercentage()).isEqualTo(DEFAULT_MEDIATOR_PERCENTAGE);
-        assertThat(testWorkRequest.getInterventionDateTime()).isEqualTo(DEFAULT_INTERVENTION_DATE_TIME);
         assertThat(testWorkRequest.getDetailedDescription()).isEqualTo(DEFAULT_DETAILED_DESCRIPTION);
         assertThat(testWorkRequest.getMagnitude()).isEqualTo(DEFAULT_MAGNITUDE);
         assertThat(testWorkRequest.getEstimatedWorkFees()).isEqualTo(DEFAULT_ESTIMATED_WORK_FEES);
+        assertThat(testWorkRequest.getPlannedStartDateTime()).isEqualTo(DEFAULT_PLANNED_START_DATE_TIME);
+        assertThat(testWorkRequest.getPlannedEndDateTime()).isEqualTo(DEFAULT_PLANNED_END_DATE_TIME);
+        assertThat(testWorkRequest.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -176,10 +189,12 @@ public class WorkRequestResourceIT {
             .andExpect(jsonPath("$.[*].forMysef").value(hasItem(DEFAULT_FOR_MYSEF.booleanValue())))
             .andExpect(jsonPath("$.[*].constructionSite").value(hasItem(DEFAULT_CONSTRUCTION_SITE.booleanValue())))
             .andExpect(jsonPath("$.[*].mediatorPercentage").value(hasItem(DEFAULT_MEDIATOR_PERCENTAGE)))
-            .andExpect(jsonPath("$.[*].interventionDateTime").value(hasItem(sameInstant(DEFAULT_INTERVENTION_DATE_TIME))))
             .andExpect(jsonPath("$.[*].detailedDescription").value(hasItem(DEFAULT_DETAILED_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].magnitude").value(hasItem(DEFAULT_MAGNITUDE.toString())))
-            .andExpect(jsonPath("$.[*].estimatedWorkFees").value(hasItem(DEFAULT_ESTIMATED_WORK_FEES.intValue())));
+            .andExpect(jsonPath("$.[*].estimatedWorkFees").value(hasItem(DEFAULT_ESTIMATED_WORK_FEES.intValue())))
+            .andExpect(jsonPath("$.[*].plannedStartDateTime").value(hasItem(sameInstant(DEFAULT_PLANNED_START_DATE_TIME))))
+            .andExpect(jsonPath("$.[*].plannedEndDateTime").value(hasItem(sameInstant(DEFAULT_PLANNED_END_DATE_TIME))))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
     
     @Test
@@ -197,10 +212,12 @@ public class WorkRequestResourceIT {
             .andExpect(jsonPath("$.forMysef").value(DEFAULT_FOR_MYSEF.booleanValue()))
             .andExpect(jsonPath("$.constructionSite").value(DEFAULT_CONSTRUCTION_SITE.booleanValue()))
             .andExpect(jsonPath("$.mediatorPercentage").value(DEFAULT_MEDIATOR_PERCENTAGE))
-            .andExpect(jsonPath("$.interventionDateTime").value(sameInstant(DEFAULT_INTERVENTION_DATE_TIME)))
             .andExpect(jsonPath("$.detailedDescription").value(DEFAULT_DETAILED_DESCRIPTION))
             .andExpect(jsonPath("$.magnitude").value(DEFAULT_MAGNITUDE.toString()))
-            .andExpect(jsonPath("$.estimatedWorkFees").value(DEFAULT_ESTIMATED_WORK_FEES.intValue()));
+            .andExpect(jsonPath("$.estimatedWorkFees").value(DEFAULT_ESTIMATED_WORK_FEES.intValue()))
+            .andExpect(jsonPath("$.plannedStartDateTime").value(sameInstant(DEFAULT_PLANNED_START_DATE_TIME)))
+            .andExpect(jsonPath("$.plannedEndDateTime").value(sameInstant(DEFAULT_PLANNED_END_DATE_TIME)))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
     @Test
     @Transactional
@@ -227,10 +244,12 @@ public class WorkRequestResourceIT {
             .forMysef(UPDATED_FOR_MYSEF)
             .constructionSite(UPDATED_CONSTRUCTION_SITE)
             .mediatorPercentage(UPDATED_MEDIATOR_PERCENTAGE)
-            .interventionDateTime(UPDATED_INTERVENTION_DATE_TIME)
             .detailedDescription(UPDATED_DETAILED_DESCRIPTION)
             .magnitude(UPDATED_MAGNITUDE)
-            .estimatedWorkFees(UPDATED_ESTIMATED_WORK_FEES);
+            .estimatedWorkFees(UPDATED_ESTIMATED_WORK_FEES)
+            .plannedStartDateTime(UPDATED_PLANNED_START_DATE_TIME)
+            .plannedEndDateTime(UPDATED_PLANNED_END_DATE_TIME)
+            .status(UPDATED_STATUS);
 
         restWorkRequestMockMvc.perform(put("/api/work-requests")
             .contentType(MediaType.APPLICATION_JSON)
@@ -245,10 +264,12 @@ public class WorkRequestResourceIT {
         assertThat(testWorkRequest.isForMysef()).isEqualTo(UPDATED_FOR_MYSEF);
         assertThat(testWorkRequest.isConstructionSite()).isEqualTo(UPDATED_CONSTRUCTION_SITE);
         assertThat(testWorkRequest.getMediatorPercentage()).isEqualTo(UPDATED_MEDIATOR_PERCENTAGE);
-        assertThat(testWorkRequest.getInterventionDateTime()).isEqualTo(UPDATED_INTERVENTION_DATE_TIME);
         assertThat(testWorkRequest.getDetailedDescription()).isEqualTo(UPDATED_DETAILED_DESCRIPTION);
         assertThat(testWorkRequest.getMagnitude()).isEqualTo(UPDATED_MAGNITUDE);
         assertThat(testWorkRequest.getEstimatedWorkFees()).isEqualTo(UPDATED_ESTIMATED_WORK_FEES);
+        assertThat(testWorkRequest.getPlannedStartDateTime()).isEqualTo(UPDATED_PLANNED_START_DATE_TIME);
+        assertThat(testWorkRequest.getPlannedEndDateTime()).isEqualTo(UPDATED_PLANNED_END_DATE_TIME);
+        assertThat(testWorkRequest.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

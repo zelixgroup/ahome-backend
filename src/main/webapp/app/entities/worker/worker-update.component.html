@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-worker-heading" jhiTranslate="ahomeApp.worker.home.createOrEditLabel">Create or edit a Worker</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.worker.picture" for="field_picture">Picture</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('pictureContentType')!.value + ';base64,' + editForm.get('picture')!.value" style="max-height: 100px;" *ngIf="editForm.get('picture')!.value" alt="worker image"/>
+                        <div *ngIf="editForm.get('picture')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('pictureContentType')!.value }}, {{ byteSize(editForm.get('picture')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('picture', 'pictureContentType', 'file_picture')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_picture" (change)="setFileData($event, 'picture', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="picture" id="field_picture"
+                           formControlName="picture"/>
+                    <input type="hidden" class="form-control" name="pictureContentType" id="field_pictureContentType"
+                           formControlName="pictureContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.worker.workCertificate" for="field_workCertificate">Work Certificate</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('workCertificateContentType')!.value + ';base64,' + editForm.get('workCertificate')!.value" style="max-height: 100px;" *ngIf="editForm.get('workCertificate')!.value" alt="worker image"/>
+                        <div *ngIf="editForm.get('workCertificate')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('workCertificateContentType')!.value }}, {{ byteSize(editForm.get('workCertificate')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('workCertificate', 'workCertificateContentType', 'file_workCertificate')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_workCertificate" (change)="setFileData($event, 'workCertificate', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="workCertificate" id="field_workCertificate"
+                           formControlName="workCertificate"/>
+                    <input type="hidden" class="form-control" name="workCertificateContentType" id="field_workCertificateContentType"
+                           formControlName="workCertificateContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.worker.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="appUserOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : appUserOption" *ngFor="let appUserOption of appusers; trackBy: trackById">{{ appUserOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

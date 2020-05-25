@@ -75,6 +75,36 @@
                             <span jhiTranslate="global.menu.entities.workReview">Work Review</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="id-document-type" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.idDocumentType">Id Document Type</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="id-document" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.idDocument">Id Document</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="worker" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.worker">Worker</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="work-request-status-change" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.workRequestStatusChange">Work Request Status Change</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="work-review-comment" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.workReviewComment">Work Review Comment</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

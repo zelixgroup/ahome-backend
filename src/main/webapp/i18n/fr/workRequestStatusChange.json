@@ -1,0 +1,26 @@
+{
+  "ahomeApp": {
+    "workRequestStatusChange": {
+      "home": {
+        "title": "WorkRequestStatusChanges",
+        "createLabel": "Créer un nouveau Work Request Status Change",
+        "createOrEditLabel": "Créer ou éditer un Work Request Status Change",
+        "notFound": "Aucun Work Request Status Change trouvé"
+      },
+      "created": "Un nouveau Work Request Status Change a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Work Request Status Change avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Work Request Status Change avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Work Request Status Change {{ id }} ?"
+      },
+      "detail": {
+        "title": "Work Request Status Change"
+      },
+      "oldStatus": "Old Status",
+      "newStatus": "New Status",
+      "dateTimeOfStatusChange": "Date Time Of Status Change",
+      "workRequest": "Work Request",
+      "workRequest": "Work Request"
+    }
+  }
+}

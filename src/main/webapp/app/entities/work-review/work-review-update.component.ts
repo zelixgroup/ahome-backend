@@ -25,6 +25,7 @@ export class WorkReviewUpdateComponent implements OnInit {
     id: [],
     reviewDateTime: [],
     starsNumber: [],
+    notes: [],
     workRequest: [],
   });
 
@@ -73,6 +74,7 @@ export class WorkReviewUpdateComponent implements OnInit {
       id: workReview.id,
       reviewDateTime: workReview.reviewDateTime ? workReview.reviewDateTime.format(DATE_TIME_FORMAT) : null,
       starsNumber: workReview.starsNumber,
+      notes: workReview.notes,
       workRequest: workReview.workRequest,
     });
   }
@@ -99,6 +101,7 @@ export class WorkReviewUpdateComponent implements OnInit {
         ? moment(this.editForm.get(['reviewDateTime'])!.value, DATE_TIME_FORMAT)
         : undefined,
       starsNumber: this.editForm.get(['starsNumber'])!.value,
+      notes: this.editForm.get(['notes'])!.value,
       workRequest: this.editForm.get(['workRequest'])!.value,
     };
   }

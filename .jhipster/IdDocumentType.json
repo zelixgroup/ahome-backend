@@ -1,0 +1,29 @@
+{
+  "name": "IdDocumentType",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "needVerso",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200525005932",
+  "entityTableName": "id_document_type",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

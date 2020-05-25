@@ -24,10 +24,6 @@
                 <dd>
                     <span>{{ workRequest.mediatorPercentage }}</span>
                 </dd>
-                <dt><span jhiTranslate="ahomeApp.workRequest.interventionDateTime">Intervention Date Time</span></dt>
-                <dd>
-                    <span>{{ workRequest.interventionDateTime }}</span>
-                </dd>
                 <dt><span jhiTranslate="ahomeApp.workRequest.detailedDescription">Detailed Description</span></dt>
                 <dd>
                     <span>{{ workRequest.detailedDescription }}</span>
@@ -39,6 +35,18 @@
                 <dt><span jhiTranslate="ahomeApp.workRequest.estimatedWorkFees">Estimated Work Fees</span></dt>
                 <dd>
                     <span>{{ workRequest.estimatedWorkFees }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.plannedStartDateTime">Planned Start Date Time</span></dt>
+                <dd>
+                    <span>{{ workRequest.plannedStartDateTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.plannedEndDateTime">Planned End Date Time</span></dt>
+                <dd>
+                    <span>{{ workRequest.plannedEndDateTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workRequest.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'ahomeApp.WorkRequestStatus.' + workRequest.status }}">{{ workRequest.status }}</span>
                 </dd>
                 <dt><span jhiTranslate="ahomeApp.workRequest.work">Work</span></dt>
                 <dd>

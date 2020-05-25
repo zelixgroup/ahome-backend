@@ -1,0 +1,24 @@
+{
+  "ahomeApp": {
+    "idDocumentType": {
+      "home": {
+        "title": "Id Document Types",
+        "createLabel": "Create a new Id Document Type",
+        "createOrEditLabel": "Create or edit a Id Document Type",
+        "notFound": "No Id Document Types found"
+      },
+      "created": "A new Id Document Type is created with identifier {{ param }}",
+      "updated": "A Id Document Type is updated with identifier {{ param }}",
+      "deleted": "A Id Document Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Id Document Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Id Document Type"
+      },
+      "label": "Label",
+      "description": "Description",
+      "needVerso": "Need Verso"
+    }
+  }
+}

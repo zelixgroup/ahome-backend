@@ -1,0 +1,26 @@
+{
+  "ahomeApp": {
+    "idDocument": {
+      "home": {
+        "title": "IdDocuments",
+        "createLabel": "Créer un nouveau Id Document",
+        "createOrEditLabel": "Créer ou éditer un Id Document",
+        "notFound": "Aucun Id Document trouvé"
+      },
+      "created": "Un nouveau Id Document a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Id Document avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Id Document avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Id Document {{ id }} ?"
+      },
+      "detail": {
+        "title": "Id Document"
+      },
+      "idDocumentRecto": "Id Document Recto",
+      "idDocumentVerso": "Id Document Verso",
+      "type": "Type",
+      "worker": "Worker",
+      "worker": "Worker"
+    }
+  }
+}
