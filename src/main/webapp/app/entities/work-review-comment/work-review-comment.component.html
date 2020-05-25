@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ahomeApp.workReviewComment.home.title">Work Review Comments</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-work-review-comment" [routerLink]="['/work-review-comment/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="ahomeApp.workReviewComment.home.createLabel">
+            Create a new Work Review Comment
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="workReviewComments?.length === 0">
+        <span jhiTranslate="ahomeApp.workReviewComment.home.notFound">No workReviewComments found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="workReviewComments && workReviewComments.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReviewComment.commentDateTime">Comment Date Time</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReviewComment.comment">Comment</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReviewComment.workReview">Work Review</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReviewComment.user">User</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.workReviewComment.workReview">Work Review</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let workReviewComment of workReviewComments ;trackBy: trackId">
+                    <td><a [routerLink]="['/work-review-comment', workReviewComment.id, 'view']">{{ workReviewComment.id }}</a></td>
+                    <td>{{ workReviewComment.commentDateTime | date:'medium' }}</td>
+                    <td>{{ workReviewComment.comment }}</td>
+                    <td>
+                        <div *ngIf="workReviewComment.workReview">
+                            <a [routerLink]="['/work-review', workReviewComment.workReview?.id, 'view']" >{{ workReviewComment.workReview?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        {{ workReviewComment.user?.id }}
+                    </td>
+                    <td>
+                        <div *ngIf="workReviewComment.workReview">
+                            <a [routerLink]="['/work-review', workReviewComment.workReview?.id, 'view']" >{{ workReviewComment.workReview?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/work-review-comment', workReviewComment.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/work-review-comment', workReviewComment.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(workReviewComment)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

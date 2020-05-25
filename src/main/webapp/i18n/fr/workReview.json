@@ -18,7 +18,9 @@
       },
       "reviewDateTime": "Review Date Time",
       "starsNumber": "Stars Number",
-      "workRequest": "Work Request"
+      "notes": "Notes",
+      "workRequest": "Work Request",
+      "workReviewComments": "Work Review Comments"
     }
   }
 }

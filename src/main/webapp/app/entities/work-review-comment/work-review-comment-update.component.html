@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-work-review-comment-heading" jhiTranslate="ahomeApp.workReviewComment.home.createOrEditLabel">Create or edit a Work Review Comment</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workReviewComment.commentDateTime" for="field_commentDateTime">Comment Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_commentDateTime" type="datetime-local" class="form-control" name="commentDateTime" formControlName="commentDateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workReviewComment.comment" for="field_comment">Comment</label>
+                    <input type="text" class="form-control" name="comment" id="field_comment"
+                           formControlName="comment"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workReviewComment.workReview" for="field_workReview">Work Review</label>
+                    <select class="form-control" id="field_workReview" name="workReview" formControlName="workReview">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workReviewOption.id === editForm.get('workReview')!.value?.id ? editForm.get('workReview')!.value : workReviewOption" *ngFor="let workReviewOption of workreviews; trackBy: trackById">{{ workReviewOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workReviewComment.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workReviewComment.workReview" for="field_workReview">Work Review</label>
+                    <select class="form-control" id="field_workReview" name="workReview" formControlName="workReview">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workReviewOption.id === editForm.get('workReview')!.value?.id ? editForm.get('workReview')!.value : workReviewOption" *ngFor="let workReviewOption of workreviews; trackBy: trackById">{{ workReviewOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

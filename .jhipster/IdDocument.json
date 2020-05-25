@@ -1,0 +1,49 @@
+{
+  "name": "IdDocument",
+  "fields": [
+    {
+      "fieldName": "idDocumentRecto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "idDocumentVerso",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "idDocumentType",
+      "otherEntityRelationshipName": "idDocument",
+      "relationshipName": "type",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "worker",
+      "otherEntityRelationshipName": "idDocument",
+      "relationshipName": "worker",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "worker",
+      "otherEntityRelationshipName": "idDocument",
+      "relationshipName": "worker",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200525010032",
+  "entityTableName": "id_document",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

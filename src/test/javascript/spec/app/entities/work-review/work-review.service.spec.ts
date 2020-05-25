@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new WorkReview(0, currentDate, 0);
+      elemDefault = new WorkReview(0, currentDate, 0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -71,6 +71,7 @@ describe('Service Tests', () => {
           {
             reviewDateTime: currentDate.format(DATE_TIME_FORMAT),
             starsNumber: 1,
+            notes: 'BBBBBB',
           },
           elemDefault
         );
@@ -94,6 +95,7 @@ describe('Service Tests', () => {
           {
             reviewDateTime: currentDate.format(DATE_TIME_FORMAT),
             starsNumber: 1,
+            notes: 'BBBBBB',
           },
           elemDefault
         );

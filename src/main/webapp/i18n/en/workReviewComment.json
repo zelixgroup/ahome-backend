@@ -1,0 +1,26 @@
+{
+  "ahomeApp": {
+    "workReviewComment": {
+      "home": {
+        "title": "Work Review Comments",
+        "createLabel": "Create a new Work Review Comment",
+        "createOrEditLabel": "Create or edit a Work Review Comment",
+        "notFound": "No Work Review Comments found"
+      },
+      "created": "A new Work Review Comment is created with identifier {{ param }}",
+      "updated": "A Work Review Comment is updated with identifier {{ param }}",
+      "deleted": "A Work Review Comment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Work Review Comment {{ id }}?"
+      },
+      "detail": {
+        "title": "Work Review Comment"
+      },
+      "commentDateTime": "Comment Date Time",
+      "comment": "Comment",
+      "workReview": "Work Review",
+      "user": "User",
+      "workReview": "Work Review"
+    }
+  }
+}

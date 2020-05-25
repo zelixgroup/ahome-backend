@@ -1,0 +1,47 @@
+{
+  "name": "WorkReviewComment",
+  "fields": [
+    {
+      "fieldName": "commentDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workReview",
+      "otherEntityRelationshipName": "workReviewComment",
+      "relationshipName": "workReview",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "workReviewComment",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workReview",
+      "otherEntityRelationshipName": "workReviewComments",
+      "relationshipName": "workReview",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200525010532",
+  "entityTableName": "work_review_comment",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

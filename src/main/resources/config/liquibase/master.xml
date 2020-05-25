@@ -22,12 +22,21 @@
     <include file="config/liquibase/changelog/20200524233050_added_entity_AppUser.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200524233150_added_entity_WorkRequest.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200524233250_added_entity_WorkReview.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525005932_added_entity_IdDocumentType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010032_added_entity_IdDocument.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010132_added_entity_Worker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010332_added_entity_WorkRequestStatusChange.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010532_added_entity_WorkReviewComment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200524232750_added_entity_constraints_Address.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200524232950_added_entity_constraints_Work.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200524233050_added_entity_constraints_AppUser.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200524233150_added_entity_constraints_WorkRequest.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200524233250_added_entity_constraints_WorkReview.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010032_added_entity_constraints_IdDocument.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010132_added_entity_constraints_Worker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010332_added_entity_constraints_WorkRequestStatusChange.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525010532_added_entity_constraints_WorkReviewComment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

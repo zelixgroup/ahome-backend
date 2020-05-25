@@ -36,6 +36,28 @@ import { RouterModule } from '@angular/router';
         path: 'work-review',
         loadChildren: () => import('./work-review/work-review.module').then(m => m.AhomeWorkReviewModule),
       },
+      ,
+      {
+        path: 'id-document-type',
+        loadChildren: () => import('./id-document-type/id-document-type.module').then(m => m.AhomeIdDocumentTypeModule),
+      },
+      {
+        path: 'id-document',
+        loadChildren: () => import('./id-document/id-document.module').then(m => m.AhomeIdDocumentModule),
+      },
+      {
+        path: 'worker',
+        loadChildren: () => import('./worker/worker.module').then(m => m.AhomeWorkerModule),
+      },
+      {
+        path: 'work-request-status-change',
+        loadChildren: () =>
+          import('./work-request-status-change/work-request-status-change.module').then(m => m.AhomeWorkRequestStatusChangeModule),
+      },
+      {
+        path: 'work-review-comment',
+        loadChildren: () => import('./work-review-comment/work-review-comment.module').then(m => m.AhomeWorkReviewCommentModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity IdDocument.
+    -->
+    <changeSet id="20200525010032-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="id_document"
+                                 constraintName="fk_id_document_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="id_document_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="worker_id"
+                                 baseTableName="id_document"
+                                 constraintName="fk_id_document_worker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="worker"/>
+
+        <addForeignKeyConstraint baseColumnNames="worker_id"
+                                 baseTableName="id_document"
+                                 constraintName="fk_id_document_worker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="worker"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,91 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ahomeApp.idDocument.home.title">Id Documents</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-id-document" [routerLink]="['/id-document/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="ahomeApp.idDocument.home.createLabel">
+            Create a new Id Document
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="idDocuments?.length === 0">
+        <span jhiTranslate="ahomeApp.idDocument.home.notFound">No idDocuments found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="idDocuments && idDocuments.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.idDocument.idDocumentRecto">Id Document Recto</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.idDocument.idDocumentVerso">Id Document Verso</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.idDocument.type">Type</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.idDocument.worker">Worker</span></th>
+                    <th scope="col" ><span jhiTranslate="ahomeApp.idDocument.worker">Worker</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let idDocument of idDocuments ;trackBy: trackId">
+                    <td><a [routerLink]="['/id-document', idDocument.id, 'view']">{{ idDocument.id }}</a></td>
+                    <td>
+                        <a *ngIf="idDocument.idDocumentRecto" (click)="openFile(idDocument.idDocumentRectoContentType, idDocument.idDocumentRecto)">
+                            <img [src]="'data:' + idDocument.idDocumentRectoContentType + ';base64,' + idDocument.idDocumentRecto" style="max-height: 30px;" alt="idDocument image"/>
+                        </a>
+                        <span *ngIf="idDocument.idDocumentRecto">{{ idDocument.idDocumentRectoContentType }}, {{ byteSize(idDocument.idDocumentRecto) }}</span>
+                    </td>
+                    <td>
+                        <a *ngIf="idDocument.idDocumentVerso" (click)="openFile(idDocument.idDocumentVersoContentType, idDocument.idDocumentVerso)">
+                            <img [src]="'data:' + idDocument.idDocumentVersoContentType + ';base64,' + idDocument.idDocumentVerso" style="max-height: 30px;" alt="idDocument image"/>
+                        </a>
+                        <span *ngIf="idDocument.idDocumentVerso">{{ idDocument.idDocumentVersoContentType }}, {{ byteSize(idDocument.idDocumentVerso) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="idDocument.type">
+                            <a [routerLink]="['/id-document-type', idDocument.type?.id, 'view']" >{{ idDocument.type?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="idDocument.worker">
+                            <a [routerLink]="['/worker', idDocument.worker?.id, 'view']" >{{ idDocument.worker?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="idDocument.worker">
+                            <a [routerLink]="['/worker', idDocument.worker?.id, 'view']" >{{ idDocument.worker?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/id-document', idDocument.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/id-document', idDocument.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(idDocument)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

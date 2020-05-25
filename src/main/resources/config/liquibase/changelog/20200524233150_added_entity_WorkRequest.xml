@@ -28,9 +28,6 @@
             <column name="mediator_percentage" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="intervention_date_time" type="datetime">
-                <constraints nullable="true" />
-            </column>
             <column name="detailed_description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -38,6 +35,15 @@
                 <constraints nullable="true" />
             </column>
             <column name="estimated_work_fees" type="decimal(21,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="planned_start_date_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="planned_end_date_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="work_id" type="bigint">
@@ -52,7 +58,8 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="work_request" columnName="creation_date_time" columnDataType="datetime"/>
-        <dropDefaultValue tableName="work_request" columnName="intervention_date_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="work_request" columnName="planned_start_date_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="work_request" columnName="planned_end_date_time" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200524233150-1-relations" author="jhipster">
@@ -78,10 +85,12 @@
             <column name="for_mysef" type="boolean"/>
             <column name="construction_site" type="boolean"/>
             <column name="mediator_percentage" type="numeric"/>
-            <column name="intervention_date_time" type="datetime"/>
             <column name="detailed_description" type="string"/>
             <column name="magnitude" type="string"/>
             <column name="estimated_work_fees" type="numeric"/>
+            <column name="planned_start_date_time" type="datetime"/>
+            <column name="planned_end_date_time" type="datetime"/>
+            <column name="status" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

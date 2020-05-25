@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workReviewComment">
+            <h2><span jhiTranslate="ahomeApp.workReviewComment.detail.title">Work Review Comment</span> {{ workReviewComment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.workReviewComment.commentDateTime">Comment Date Time</span></dt>
+                <dd>
+                    <span>{{ workReviewComment.commentDateTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workReviewComment.comment">Comment</span></dt>
+                <dd>
+                    <span>{{ workReviewComment.comment }}</span>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workReviewComment.workReview">Work Review</span></dt>
+                <dd>
+                    <div *ngIf="workReviewComment.workReview">
+                        <a [routerLink]="['/work-review', workReviewComment.workReview?.id, 'view']">{{ workReviewComment.workReview?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workReviewComment.user">User</span></dt>
+                <dd>
+                    {{ workReviewComment.user?.id }}
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.workReviewComment.workReview">Work Review</span></dt>
+                <dd>
+                    <div *ngIf="workReviewComment.workReview">
+                        <a [routerLink]="['/work-review', workReviewComment.workReview?.id, 'view']">{{ workReviewComment.workReview?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/work-review-comment', workReviewComment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="idDocument">
+            <h2><span jhiTranslate="ahomeApp.idDocument.detail.title">Id Document</span> {{ idDocument.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.idDocument.idDocumentRecto">Id Document Recto</span></dt>
+                <dd>
+                    <div *ngIf="idDocument.idDocumentRecto">
+                        <a (click)="openFile(idDocument.idDocumentRectoContentType, idDocument.idDocumentRecto)">
+                            <img [src]="'data:' + idDocument.idDocumentRectoContentType + ';base64,' + idDocument.idDocumentRecto" style="max-width: 100%;" alt="idDocument image"/>
+                        </a>
+                        {{ idDocument.idDocumentRectoContentType }}, {{ byteSize(idDocument.idDocumentRecto) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.idDocument.idDocumentVerso">Id Document Verso</span></dt>
+                <dd>
+                    <div *ngIf="idDocument.idDocumentVerso">
+                        <a (click)="openFile(idDocument.idDocumentVersoContentType, idDocument.idDocumentVerso)">
+                            <img [src]="'data:' + idDocument.idDocumentVersoContentType + ';base64,' + idDocument.idDocumentVerso" style="max-width: 100%;" alt="idDocument image"/>
+                        </a>
+                        {{ idDocument.idDocumentVersoContentType }}, {{ byteSize(idDocument.idDocumentVerso) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.idDocument.type">Type</span></dt>
+                <dd>
+                    <div *ngIf="idDocument.type">
+                        <a [routerLink]="['/id-document-type', idDocument.type?.id, 'view']">{{ idDocument.type?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.idDocument.worker">Worker</span></dt>
+                <dd>
+                    <div *ngIf="idDocument.worker">
+                        <a [routerLink]="['/worker', idDocument.worker?.id, 'view']">{{ idDocument.worker?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.idDocument.worker">Worker</span></dt>
+                <dd>
+                    <div *ngIf="idDocument.worker">
+                        <a [routerLink]="['/worker', idDocument.worker?.id, 'view']">{{ idDocument.worker?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/id-document', idDocument.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

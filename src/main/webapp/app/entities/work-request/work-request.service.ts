@@ -52,10 +52,12 @@ export class WorkRequestService {
     const copy: IWorkRequest = Object.assign({}, workRequest, {
       creationDateTime:
         workRequest.creationDateTime && workRequest.creationDateTime.isValid() ? workRequest.creationDateTime.toJSON() : undefined,
-      interventionDateTime:
-        workRequest.interventionDateTime && workRequest.interventionDateTime.isValid()
-          ? workRequest.interventionDateTime.toJSON()
+      plannedStartDateTime:
+        workRequest.plannedStartDateTime && workRequest.plannedStartDateTime.isValid()
+          ? workRequest.plannedStartDateTime.toJSON()
           : undefined,
+      plannedEndDateTime:
+        workRequest.plannedEndDateTime && workRequest.plannedEndDateTime.isValid() ? workRequest.plannedEndDateTime.toJSON() : undefined,
     });
     return copy;
   }
@@ -63,7 +65,8 @@ export class WorkRequestService {
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
       res.body.creationDateTime = res.body.creationDateTime ? moment(res.body.creationDateTime) : undefined;
-      res.body.interventionDateTime = res.body.interventionDateTime ? moment(res.body.interventionDateTime) : undefined;
+      res.body.plannedStartDateTime = res.body.plannedStartDateTime ? moment(res.body.plannedStartDateTime) : undefined;
+      res.body.plannedEndDateTime = res.body.plannedEndDateTime ? moment(res.body.plannedEndDateTime) : undefined;
     }
     return res;
   }
@@ -72,7 +75,8 @@ export class WorkRequestService {
     if (res.body) {
       res.body.forEach((workRequest: IWorkRequest) => {
         workRequest.creationDateTime = workRequest.creationDateTime ? moment(workRequest.creationDateTime) : undefined;
-        workRequest.interventionDateTime = workRequest.interventionDateTime ? moment(workRequest.interventionDateTime) : undefined;
+        workRequest.plannedStartDateTime = workRequest.plannedStartDateTime ? moment(workRequest.plannedStartDateTime) : undefined;
+        workRequest.plannedEndDateTime = workRequest.plannedEndDateTime ? moment(workRequest.plannedEndDateTime) : undefined;
       });
     }
     return res;

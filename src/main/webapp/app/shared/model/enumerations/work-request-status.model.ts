@@ -1,0 +1,13 @@
+export const enum WorkRequestStatus {
+  SUBMITTED = 'SUBMITTED',
+
+  ACCEPTED = 'ACCEPTED',
+
+  IN_PROGRESS = 'IN_PROGRESS',
+
+  FINISHED = 'FINISHED',
+
+  CANCELED = 'CANCELED',
+
+  REJECTED = 'REJECTED',
+}

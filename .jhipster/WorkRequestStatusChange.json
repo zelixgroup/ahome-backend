@@ -1,0 +1,46 @@
+{
+  "name": "WorkRequestStatusChange",
+  "fields": [
+    {
+      "fieldName": "oldStatus",
+      "fieldType": "WorkRequestStatus",
+      "fieldValues": "SUBMITTED,ACCEPTED,IN_PROGRESS,FINISHED,CANCELED,REJECTED"
+    },
+    {
+      "fieldName": "newStatus",
+      "fieldType": "WorkRequestStatus",
+      "fieldValues": "SUBMITTED,ACCEPTED,IN_PROGRESS,FINISHED,CANCELED,REJECTED"
+    },
+    {
+      "fieldName": "dateTimeOfStatusChange",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workRequest",
+      "otherEntityRelationshipName": "workRequestStatusChange",
+      "relationshipName": "workRequest",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workRequest",
+      "otherEntityRelationshipName": "statusChanges",
+      "relationshipName": "workRequest",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200525010332",
+  "entityTableName": "work_request_status_change",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

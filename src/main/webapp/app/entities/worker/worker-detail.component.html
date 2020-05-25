@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="worker">
+            <h2><span jhiTranslate="ahomeApp.worker.detail.title">Worker</span> {{ worker.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ahomeApp.worker.picture">Picture</span></dt>
+                <dd>
+                    <div *ngIf="worker.picture">
+                        <a (click)="openFile(worker.pictureContentType, worker.picture)">
+                            <img [src]="'data:' + worker.pictureContentType + ';base64,' + worker.picture" style="max-width: 100%;" alt="worker image"/>
+                        </a>
+                        {{ worker.pictureContentType }}, {{ byteSize(worker.picture) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.worker.workCertificate">Work Certificate</span></dt>
+                <dd>
+                    <div *ngIf="worker.workCertificate">
+                        <a (click)="openFile(worker.workCertificateContentType, worker.workCertificate)">
+                            <img [src]="'data:' + worker.workCertificateContentType + ';base64,' + worker.workCertificate" style="max-width: 100%;" alt="worker image"/>
+                        </a>
+                        {{ worker.workCertificateContentType }}, {{ byteSize(worker.workCertificate) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ahomeApp.worker.user">User</span></dt>
+                <dd>
+                    <div *ngIf="worker.user">
+                        <a [routerLink]="['/app-user', worker.user?.id, 'view']">{{ worker.user?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/worker', worker.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -50,6 +50,7 @@ relationship ManyToOne {
 entity AppUser {
 	
 }
+
 relationship OneToMany {
 	AppUser{addresses} to Address
 }
@@ -57,24 +58,69 @@ relationship OneToMany {
 relationship ManyToOne {
 	AppUser{user} to User
 }
+entity IdDocumentType {
+	label String
+    description String
+    needVerso Boolean
+}
+entity IdDocument {
+	idDocumentRecto ImageBlob
+    idDocumentVerso ImageBlob
+}
+relationship ManyToOne {
+	IdDocument{type} to IdDocumentType
+}
+entity Worker {
+	picture ImageBlob
+    workCertificate ImageBlob
+}
+relationship OneToMany {
+	Worker{idDocument} to IdDocument
+}
+relationship ManyToOne {
+	IdDocument{worker} to Worker
+}
+relationship ManyToOne {
+	Worker{user} to AppUser
+}
 
 enum WorkRequestMagnitude {
 	LARGE,
     MEDIUM,
     SMALL
 }
-
+enum WorkRequestStatus {
+	SUBMITTED,
+    ACCEPTED,
+    IN_PROGRESS,
+    FINISHED,
+    CANCELED,
+    REJECTED
+}
 entity WorkRequest {
 	creationDateTime ZonedDateTime
     forMysef Boolean
     constructionSite Boolean
     mediatorPercentage Integer
-    interventionDateTime ZonedDateTime
     detailedDescription String
     magnitude WorkRequestMagnitude
     estimatedWorkFees BigDecimal
+    plannedStartDateTime ZonedDateTime
+    plannedEndDateTime ZonedDateTime
+    status WorkRequestStatus
 }
 
+entity WorkRequestStatusChange {
+	oldStatus WorkRequestStatus
+    newStatus WorkRequestStatus
+    dateTimeOfStatusChange ZonedDateTime
+}
+relationship ManyToOne {
+	WorkRequestStatusChange{workRequest} to WorkRequest
+}
+relationship OneToMany {
+	WorkRequest{statusChanges} to WorkRequestStatusChange
+}
 relationship ManyToOne {
 	WorkRequest{work} to Work
 }
@@ -88,10 +134,22 @@ relationship ManyToOne {
 entity WorkReview {
 	reviewDateTime ZonedDateTime
     starsNumber Integer
+    notes String
 }
 
 relationship OneToOne {
 	WorkReview{workRequest} to WorkRequest
 }
 
+entity WorkReviewComment {
+	commentDateTime ZonedDateTime
+    comment String
+}
+relationship ManyToOne {
+	WorkReviewComment{workReview} to WorkReview
+    WorkReviewComment{user} to User
+}
+relationship OneToMany {
+	WorkReview{workReviewComments} to WorkReviewComment
+}
 service all with serviceImpl

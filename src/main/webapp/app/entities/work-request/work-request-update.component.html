@@ -37,13 +37,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.interventionDateTime" for="field_interventionDateTime">Intervention Date Time</label>
-                    <div class="d-flex">
-                        <input id="field_interventionDateTime" type="datetime-local" class="form-control" name="interventionDateTime" formControlName="interventionDateTime" placeholder="YYYY-MM-DD HH:mm"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.detailedDescription" for="field_detailedDescription">Detailed Description</label>
                     <input type="text" class="form-control" name="detailedDescription" id="field_detailedDescription"
                            formControlName="detailedDescription"/>
@@ -62,6 +55,32 @@
                     <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.estimatedWorkFees" for="field_estimatedWorkFees">Estimated Work Fees</label>
                     <input type="number" class="form-control" name="estimatedWorkFees" id="field_estimatedWorkFees"
                            formControlName="estimatedWorkFees"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.plannedStartDateTime" for="field_plannedStartDateTime">Planned Start Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_plannedStartDateTime" type="datetime-local" class="form-control" name="plannedStartDateTime" formControlName="plannedStartDateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.plannedEndDateTime" for="field_plannedEndDateTime">Planned End Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_plannedEndDateTime" type="datetime-local" class="form-control" name="plannedEndDateTime" formControlName="plannedEndDateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ahomeApp.workRequest.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="SUBMITTED">{{ 'ahomeApp.WorkRequestStatus.SUBMITTED' | translate }}</option>
+                        <option value="ACCEPTED">{{ 'ahomeApp.WorkRequestStatus.ACCEPTED' | translate }}</option>
+                        <option value="IN_PROGRESS">{{ 'ahomeApp.WorkRequestStatus.IN_PROGRESS' | translate }}</option>
+                        <option value="FINISHED">{{ 'ahomeApp.WorkRequestStatus.FINISHED' | translate }}</option>
+                        <option value="CANCELED">{{ 'ahomeApp.WorkRequestStatus.CANCELED' | translate }}</option>
+                        <option value="REJECTED">{{ 'ahomeApp.WorkRequestStatus.REJECTED' | translate }}</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

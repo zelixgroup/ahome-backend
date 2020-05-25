@@ -41,6 +41,9 @@ public class WorkReviewResourceIT {
     private static final Integer DEFAULT_STARS_NUMBER = 1;
     private static final Integer UPDATED_STARS_NUMBER = 2;
 
+    private static final String DEFAULT_NOTES = "AAAAAAAAAA";
+    private static final String UPDATED_NOTES = "BBBBBBBBBB";
+
     @Autowired
     private WorkReviewRepository workReviewRepository;
 
@@ -64,7 +67,8 @@ public class WorkReviewResourceIT {
     public static WorkReview createEntity(EntityManager em) {
         WorkReview workReview = new WorkReview()
             .reviewDateTime(DEFAULT_REVIEW_DATE_TIME)
-            .starsNumber(DEFAULT_STARS_NUMBER);
+            .starsNumber(DEFAULT_STARS_NUMBER)
+            .notes(DEFAULT_NOTES);
         return workReview;
     }
     /**
@@ -76,7 +80,8 @@ public class WorkReviewResourceIT {
     public static WorkReview createUpdatedEntity(EntityManager em) {
         WorkReview workReview = new WorkReview()
             .reviewDateTime(UPDATED_REVIEW_DATE_TIME)
-            .starsNumber(UPDATED_STARS_NUMBER);
+            .starsNumber(UPDATED_STARS_NUMBER)
+            .notes(UPDATED_NOTES);
         return workReview;
     }
 
@@ -101,6 +106,7 @@ public class WorkReviewResourceIT {
         WorkReview testWorkReview = workReviewList.get(workReviewList.size() - 1);
         assertThat(testWorkReview.getReviewDateTime()).isEqualTo(DEFAULT_REVIEW_DATE_TIME);
         assertThat(testWorkReview.getStarsNumber()).isEqualTo(DEFAULT_STARS_NUMBER);
+        assertThat(testWorkReview.getNotes()).isEqualTo(DEFAULT_NOTES);
     }
 
     @Test
@@ -135,7 +141,8 @@ public class WorkReviewResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(workReview.getId().intValue())))
             .andExpect(jsonPath("$.[*].reviewDateTime").value(hasItem(sameInstant(DEFAULT_REVIEW_DATE_TIME))))
-            .andExpect(jsonPath("$.[*].starsNumber").value(hasItem(DEFAULT_STARS_NUMBER)));
+            .andExpect(jsonPath("$.[*].starsNumber").value(hasItem(DEFAULT_STARS_NUMBER)))
+            .andExpect(jsonPath("$.[*].notes").value(hasItem(DEFAULT_NOTES)));
     }
     
     @Test
@@ -150,7 +157,8 @@ public class WorkReviewResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(workReview.getId().intValue()))
             .andExpect(jsonPath("$.reviewDateTime").value(sameInstant(DEFAULT_REVIEW_DATE_TIME)))
-            .andExpect(jsonPath("$.starsNumber").value(DEFAULT_STARS_NUMBER));
+            .andExpect(jsonPath("$.starsNumber").value(DEFAULT_STARS_NUMBER))
+            .andExpect(jsonPath("$.notes").value(DEFAULT_NOTES));
     }
     @Test
     @Transactional
@@ -174,7 +182,8 @@ public class WorkReviewResourceIT {
         em.detach(updatedWorkReview);
         updatedWorkReview
             .reviewDateTime(UPDATED_REVIEW_DATE_TIME)
-            .starsNumber(UPDATED_STARS_NUMBER);
+            .starsNumber(UPDATED_STARS_NUMBER)
+            .notes(UPDATED_NOTES);
 
         restWorkReviewMockMvc.perform(put("/api/work-reviews")
             .contentType(MediaType.APPLICATION_JSON)
@@ -187,6 +196,7 @@ public class WorkReviewResourceIT {
         WorkReview testWorkReview = workReviewList.get(workReviewList.size() - 1);
         assertThat(testWorkReview.getReviewDateTime()).isEqualTo(UPDATED_REVIEW_DATE_TIME);
         assertThat(testWorkReview.getStarsNumber()).isEqualTo(UPDATED_STARS_NUMBER);
+        assertThat(testWorkReview.getNotes()).isEqualTo(UPDATED_NOTES);
     }
 
     @Test
